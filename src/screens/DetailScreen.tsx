@@ -21,10 +21,18 @@ export const DetailScreen = () => {
         </TouchableOpacity>
         </View>
       </View>
+       <View>
         <Image
         source={item.image}
          style={styles.image}
+         resizeMode="cover"
         />
+       </View>
+       <View style={{
+         flexDirection:"row" ,
+         justifyContent:"space-between",
+         width:"100%"
+       }}>
         <View style={styles.cardPeople}>
          {
          [assets.person01, assets.person02, assets.person03].map(item=>(
@@ -36,11 +44,28 @@ export const DetailScreen = () => {
                 width: SIZES.font * 3,
                 height: SIZES.font * 3,
                 borderRadius: SIZES.font,
+                marginRight: -10
               }}
             />
          ))
         }
         </View>
+        <View style={{
+          backgroundColor:"#fff",
+          position:"absolute",
+          right:10,
+          bottom:-25,
+          borderRadius:10
+        }}>
+        <Text style={{fontSize:25,fontWeight:"bold",
+          padding:3
+        }}>Fini dans</Text>
+        <Text  style={{fontSize:25,fontWeight:"bold",
+        }}> 15h 30mn </Text>
+        </View>
+        </View>
+         <Text style={styles.title}> {item.name} </Text>
+         
     </View>
     </ScrollView>
   )
@@ -65,7 +90,8 @@ const styles = StyleSheet.create({
   },
   image:{
     width: '100%',
-    height:300
+    height:300,
+    zIndex:-999
   },
   btn:{
     backgroundColor:"#fff",
@@ -76,8 +102,14 @@ const styles = StyleSheet.create({
   },
   cardPeople:{
     flexDirection:'row',
-    position:'absolute',
-    top:-25,
-    left:10,
+    position :"absolute",
+    bottom:-20,
+    left:15,
+    zIndex:999
+  },
+  title:{
+    fontSize:25,
+    marginTop:30,
+    fontWeight:"900",
   }
 })
